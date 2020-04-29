@@ -21,5 +21,8 @@ public class AdicionarAlunoService {
         aluno.setDocumento(request.getDocumento());
 
         repository.save(aluno);
+
+
+        TESTE
     }
 }
