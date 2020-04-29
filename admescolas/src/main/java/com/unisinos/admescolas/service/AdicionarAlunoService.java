@@ -6,15 +6,13 @@ import com.unisinos.admescolas.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-
 @Service
 public class AdicionarAlunoService {
 
     @Autowired
     private AlunoRepository repository;
 
-    public void adicionar(AlunoRequest request){
+    public void adicionar(AlunoRequest request) {
         Aluno aluno = new Aluno();
         aluno.setNomeCompleto(request.getNomeCompleto());
         aluno.setDataDeNascimento(request.getDataDeNascimento());

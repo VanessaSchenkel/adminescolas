@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -32,19 +31,19 @@ public class Avaliacao {
     @Column(name = "TIPO_AVALIACAO")
     private String tipoAvaliacao;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_AvaliacaoAluno", referencedColumnName = "id")
     private Aluno aluno;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_AvaliacaoDisciplina", referencedColumnName = "id")
     private Disciplina disciplina;
 
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_AvaliacaoTurma", referencedColumnName = "id")
     private List<Turma> listaDeTurma;
 
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_AvaliacaoProfessor", referencedColumnName = "id")
     private List<Professor> listaDeProfessores;
 }

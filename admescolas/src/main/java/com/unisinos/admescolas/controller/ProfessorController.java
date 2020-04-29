@@ -1,12 +1,12 @@
 package com.unisinos.admescolas.controller;
 
 import com.unisinos.admescolas.controller.request.ProfessorRequest;
-import com.unisinos.admescolas.controller.request.TurmaRequest;
 import com.unisinos.admescolas.domain.Professor;
-import com.unisinos.admescolas.domain.Turma;
+import com.unisinos.admescolas.domain.exception.AdminException;
 import com.unisinos.admescolas.repository.ProfessorRepository;
-import com.unisinos.admescolas.repository.TurmaRepository;
-import com.unisinos.admescolas.service.*;
+import com.unisinos.admescolas.service.AdicionarProfessorService;
+import com.unisinos.admescolas.service.AtualizarProfessorService;
+import com.unisinos.admescolas.service.AtualizarSalarioProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -38,13 +38,13 @@ public class ProfessorController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/todos")
-    public List<Professor> listarTodosProfessores(){
+    public List<Professor> listarTodosProfessores() {
         return repository.findAll();
     }
 
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/{id}")
-    public void deletarProfessor(@PathVariable("id") Integer id){
+    public void deletarProfessor(@PathVariable("id") Integer id) {
         repository.deleteById(id);
     }
 
@@ -58,5 +58,11 @@ public class ProfessorController {
     @PostMapping("/{id}/{valor}")
     public void atualizarSalarioProfessor(@PathVariable("id") Integer id, @PathVariable("valor") double valor) {
         atualizarSalarioProfessorService.atualizar(id, valor);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/ver/{id}")
+    public Professor verPorId(@PathVariable("id") Integer id) {
+        return repository.findById(id).orElseThrow(() -> new AdminException("Não foi encontrado"));
     }
 }

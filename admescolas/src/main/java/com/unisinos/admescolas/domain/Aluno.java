@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Data
@@ -28,7 +27,7 @@ public class Aluno {
     @Column(name = "DATA_NASCIMENTO")
     private LocalDate dataDeNascimento;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_AlunoTurma", referencedColumnName = "id")
     private Turma turma;
 }

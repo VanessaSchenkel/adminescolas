@@ -13,7 +13,7 @@ public class AtualizarAlunoService {
     @Autowired
     private AlunoRepository repository;
 
-    public void atualizar(Integer id, AlunoRequest request){
+    public void atualizar(Integer id, AlunoRequest request) {
         Aluno aluno = repository.findById(id).orElseThrow(() -> new AdminException("Aluno não foi encontrado"));
         aluno.setNomeCompleto(request.getNomeCompleto());
         aluno.setDataDeNascimento(request.getDataDeNascimento());

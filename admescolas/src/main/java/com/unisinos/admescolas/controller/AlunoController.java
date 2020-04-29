@@ -2,6 +2,7 @@ package com.unisinos.admescolas.controller;
 
 import com.unisinos.admescolas.controller.request.AlunoRequest;
 import com.unisinos.admescolas.domain.Aluno;
+import com.unisinos.admescolas.domain.exception.AdminException;
 import com.unisinos.admescolas.repository.AlunoRepository;
 import com.unisinos.admescolas.service.AdicionarAlunoService;
 import com.unisinos.admescolas.service.AtualizarAlunoService;
@@ -41,20 +42,14 @@ public class AlunoController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/todos")
-    public List<Aluno> listarTodosAlunos(){
+    public List<Aluno> listarTodosAlunos() {
         return repository.findAll();
     }
 
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/{id}")
-    public void deletarAluno(@PathVariable("id") Integer id){
+    public void deletarAluno(@PathVariable("id") Integer id) {
         repository.deleteById(id);
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @PostMapping("/{id-aluno}/{id-turma}")
-    public void colocarAlunoNaTurma(@PathVariable("id-aluno") Integer idAluno, @PathVariable("id-turma") Integer idTurma){
-        definirTurmaDoAlunoService.definir(idAluno, idTurma);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -65,7 +60,14 @@ public class AlunoController {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("atualizar/{id-aluno}/{id-turma}")
-    public void atualizarTurmaDoAluno(@PathVariable("id-aluno") Integer idAluno, @PathVariable("id-turma") Integer idTurma ) {
+    public void atualizarTurmaDoAluno(@PathVariable("id-aluno") Integer idAluno, @PathVariable("id-turma") Integer idTurma) {
         atualizarTurmaDoAlunoService.atualizar(idAluno, idTurma);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/ver/{id}")
+    public Aluno verPorId(@PathVariable("id") Integer id) {
+        return repository.findById(id).orElseThrow(() -> new AdminException("Não foi encontrado"));
+    }
+
 }

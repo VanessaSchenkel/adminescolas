@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="SistemaEscolar">
+        <!-- Aluno -->
+        <xs:element name="Aluno" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="ID" type="xs:integer" />
+                    <xs:element name="Nome Completo" type="xs:string" />
+                    <xs:element name="Documento" type="xs:string" />
+                    <xs:element name="Data de Nascimento" type="xs:string" />
+                    <xs:element name="Turma" type="xs:integer" />
+                </xs:sequence>
+            </xs:complextType>
+        </xs:element>
+        <!-- Turma -->
+        <xs:element name="Turma" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="ID" type="xs:integer" />
+                    <xs:element name="Sala" type="xs:string" />
+                    <xs:element name="Série / Ano" type="xs:integer" />
+                </xs:sequence>
+            </xs:complextType>
+        </xs:element>
+        <!-- Disciplina -->
+        <xs:element name="Disciplina" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="ID" type="xs:integer" />
+                    <xs:element name="Nome" type="xs:string" />
+                    <xs:element name="Horário" type="xs:string" />
+                </xs:sequence>
+            </xs:complextType>
+        </xs:element>
+        <!-- Professor -->
+        <xs:element name="Professor" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="ID" type="xs:integer" />
+                    <xs:element name="Nome completo" type="xs:string" />
+                    <xs:element name="Data de Nascimento" type="xs:string" />
+                    <xs:element name="Salário" type="xs:float" />
+                    <xs:element name="Data de Ingresso" type="xs:string" />
+                    <xs:element name="Endereço" type="xs:string" />
+                </xs:sequence>
+            </xs:complextType>
+        </xs:element>
+        <!-- Avaliação -->
+        <xs:element name="Avaliação" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="ID" type="xs:integer" />
+                    <xs:element name="Aluno" type="xs:integer" />
+                    <xs:element name="ID_Professor_Disciplina_Turma" type="xs:integer" />
+                    <xs:element name="Nota" type="xs:float" />
+                    <xs:element name="Entregou?" type="xs:boolean" />
+                    <xs:element name="Data de Avaliação" type="xs:string" />
+                    <xs:element name="Tipo de Avaliação" type="xs:string" />
+                </xs:sequence>
+            </xs:complextType>
+        </xs:element>
+        <!-- Presença -->
+        <xs:element name="Presença" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="" />
+                    <xs:element name="ID" type="xs:integer" />
+                    <xs:element name="Esteve Presente?" type="xs:boolean" />
+                    <xs:element name="Data de Presença" type="xs:string" />
+                    <xs:element name="ID_Aluno" type="xs:integer" />
+                    <xs:element name="Disciplina" type="xs:integer" />
+                </xs:sequence>
+            </xs:complextType>
+        </xs:element>
+        <!-- Professor_Disciplina_Turma -->
+        <xs:element name="Professor_Disciplina_Turma" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="ID" type="xs:integer" />
+                    <xs:element name="ID_Professor" type="xs:integer" />
+                    <xs:element name="ID_Disciplina" type="xs:integer" />
+                    <xs:element name="ID_Turma" type="xs:integer" />
+                </xs:sequence>
+            </xs:complextType>
+        </xs:element>
+    </xs:element>
+</xs:schema>

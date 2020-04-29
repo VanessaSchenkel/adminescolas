@@ -1,6 +1,5 @@
 package com.unisinos.admescolas.service;
 
-import com.unisinos.admescolas.controller.request.AlunoRequest;
 import com.unisinos.admescolas.domain.Aluno;
 import com.unisinos.admescolas.domain.Turma;
 import com.unisinos.admescolas.domain.exception.AdminException;
@@ -18,7 +17,7 @@ public class AtualizarTurmaDoAlunoService {
     @Autowired
     private TurmaRepository turmaRepository;
 
-    public void atualizar(Integer idAluno, Integer idTurma){
+    public void atualizar(Integer idAluno, Integer idTurma) {
         Aluno aluno = repository.findById(idAluno).orElseThrow(() -> new AdminException("Aluno não foi encontrado"));
         Turma turma = turmaRepository.findById(idTurma).orElseThrow(() -> new AdminException("Turma não foi encontrado"));
 

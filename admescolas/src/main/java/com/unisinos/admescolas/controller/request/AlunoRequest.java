@@ -1,6 +1,5 @@
 package com.unisinos.admescolas.controller.request;
 
-import com.unisinos.admescolas.domain.Turma;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
