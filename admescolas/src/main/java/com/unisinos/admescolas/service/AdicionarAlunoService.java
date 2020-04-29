@@ -22,7 +22,5 @@ public class AdicionarAlunoService {
 
         repository.save(aluno);
 
-
-        TESTE
     }
 }

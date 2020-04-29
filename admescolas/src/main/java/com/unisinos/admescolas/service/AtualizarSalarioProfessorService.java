@@ -2,6 +2,7 @@ package com.unisinos.admescolas.service;
 
 import com.unisinos.admescolas.controller.request.ProfessorRequest;
 import com.unisinos.admescolas.domain.Professor;
+import com.unisinos.admescolas.domain.exception.AdminException;
 import com.unisinos.admescolas.repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ public class AtualizarSalarioProfessorService {
     private ProfessorRepository repository;
 
     public void atualizar(Integer id, double salario){
-        Professor professor = repository.findById(id).get();
+        Professor professor = repository.findById(id).orElseThrow(() -> new AdminException("Professor não foi encontrado"));
         professor.setSalario(salario);
 
         repository.save(professor);

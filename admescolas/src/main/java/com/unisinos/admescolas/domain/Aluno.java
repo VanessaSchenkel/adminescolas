@@ -29,6 +29,6 @@ public class Aluno {
     private LocalDate dataDeNascimento;
 
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "FK_AlunoTurma", referencedColumnName = "id")
     private Turma turma;
 }
